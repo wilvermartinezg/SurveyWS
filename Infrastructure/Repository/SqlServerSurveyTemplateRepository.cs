@@ -15,11 +15,37 @@ namespace SurveyWS.Infrastructure.Repository
     public class SqlServerSurveyTemplateRepository : ISurveyTemplateRepository
     {
         private readonly SurveyTemplateMapper _mapper = new();
+        private readonly SurveyTemplateDetailMapper _detailMapper = new();
         private readonly ApplicationDbContext _applicationDbContext;
 
         public SqlServerSurveyTemplateRepository(ApplicationDbContext applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;
+        }
+
+        public async Task<SurveyTemplateSummary?> FindSummaryById(SurveyTemplateId id)
+        {
+            var entity = await _applicationDbContext
+                .SurveyTemplateEfs
+                .FirstOrDefaultAsync(entity => entity.Id == id.Value);
+
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var result = _mapper.SummaryFromEntityFramework(entity);
+
+            var details = await _applicationDbContext
+                .SurveyTemplateDetailEfs
+                .Where(entityDetail =>
+                    entityDetail.SurveyTemplate != null && entityDetail.SurveyTemplate.Id == id.Value)
+                .ToListAsync();
+
+            result.Details = details.Select(_detailMapper.SummaryFromEntityFramework)
+                .ToList();
+
+            return result;
         }
 
         public async Task<SurveyTemplate?> FindById(SurveyTemplateId id)

@@ -6,7 +6,7 @@ namespace SurveyWS.Domain.Entities.SurveyTemplate
     {
         public long Value { get; }
 
-        public SurveyTemplateId(long value)
+        private SurveyTemplateId(long value)
         {
             Value = value;
         }

@@ -43,6 +43,7 @@ namespace SurveyWS
             serviceCollection.AddScoped<SurveyTemplateFinder>();
             serviceCollection.AddScoped<SurveyTemplateUpdater>();
             serviceCollection.AddScoped<SurveyTemplateDeleter>();
+            serviceCollection.AddScoped<SurveyTemplateByIdFinder>();
 
             serviceCollection.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1", new() {Title = "Survey rest API", Version = "v1"}));

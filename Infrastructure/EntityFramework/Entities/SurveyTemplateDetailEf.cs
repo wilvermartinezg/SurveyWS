@@ -14,6 +14,8 @@ namespace SurveyWS.Infrastructure.EntityFramework.Entities
 
         [Column("field_type")] public string? FieldType { get; set; }
 
+        [Column("is_required")] public bool? IsRequired { get; set; }
+
         [Column("active")] public bool Active { get; set; } = true;
 
         [ForeignKey("survey_template_id")] public SurveyTemplateEf? SurveyTemplate { get; set; }

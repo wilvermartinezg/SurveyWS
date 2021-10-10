@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace SurveyWS.Domain.Presentation
 {
@@ -12,5 +13,7 @@ namespace SurveyWS.Domain.Presentation
         public DateTime ModifiedAt { get; set; }
         public string ModifiedBy { get; set; }
         public bool Active { get; set; }
+
+        public List<SurveyTemplateDetailSummary> Details { get; set; }
     }
 }

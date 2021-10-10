@@ -7,6 +7,8 @@ namespace SurveyWS.Domain.Repository
 {
     public interface ISurveyTemplateRepository
     {
+        public Task<SurveyTemplateSummary?> FindSummaryById(SurveyTemplateId id);
+
         public Task<SurveyTemplate?> FindById(SurveyTemplateId id);
 
         public Task<List<SurveyTemplateSummary>> FindAllActive();

@@ -1,6 +1,6 @@
 namespace SurveyWS.Api.Controllers
 {
-    public class SurveyTemplateDetailJsonDto
+    public struct SurveyTemplateDetailJsonDto
     {
         public long? Id { get; set; }
         public string? FieldName { get; set; }

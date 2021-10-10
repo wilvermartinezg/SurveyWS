@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SurveyWS.Api.Controllers
 {
-    public class SurveyTemplateJsonDto
+    public struct SurveyTemplateJsonDto
     {
         public long? Id { get; set; }
         public string? Name { get; set; }
