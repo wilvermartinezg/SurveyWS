@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using SurveyWS.Domain.Entities.SurveyTemplateDetail;
 using SurveyWS.Domain.Repository;
 
-namespace SurveyWS.Application.Create
+namespace SurveyWS.Application.Delete
 {
     public class SurveyTemplateDetailDeleter
     {
