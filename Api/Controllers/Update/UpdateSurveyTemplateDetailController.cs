@@ -6,7 +6,7 @@ using SurveyWS.Application.Update;
 namespace SurveyWS.Api.Controllers.Update
 {
     [ApiController]
-    [Route("api/survey-template")]
+    [Route("api/survey-template-detail")]
     public class UpdateSurveyTemplateDetailController : ControllerBase
     {
         private readonly SurveyTemplateDetailUpdater _surveyTemplateDetailUpdater;
@@ -16,6 +16,7 @@ namespace SurveyWS.Api.Controllers.Update
             _surveyTemplateDetailUpdater = surveyTemplateDetailUpdater;
         }
 
+        [HttpPut]
         public async Task<ActionResult> Index([FromBody] SurveyTemplateDetailJsonDto data)
         {
             var request = new SurveyTemplateDetailRequest

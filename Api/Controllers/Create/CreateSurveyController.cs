@@ -35,7 +35,7 @@ namespace SurveyWS.Api.Controllers.Create
 
             var result = await _surveyCreator.Create(request);
 
-            return Created("", result);
+            return CreatedAtRoute("FindSurveyById", result, result);
         }
     }
 }

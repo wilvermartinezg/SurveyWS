@@ -16,6 +16,7 @@ namespace SurveyWS.Api.Controllers.Create
             _surveyTemplateDetailCreator = surveyTemplateDetailCreator;
         }
 
+        [HttpPost]
         public async Task<ActionResult<long>> Index([FromBody] SurveyTemplateDetailJsonDto data)
         {
             var request = new SurveyTemplateDetailRequest
