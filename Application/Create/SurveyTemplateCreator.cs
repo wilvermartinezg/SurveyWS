@@ -49,14 +49,18 @@ namespace SurveyWS.Application.Create
                 var fieldType = SurveyTemplateDetailFieldType.ValueOf(detail.FieldType);
                 var isRequired = detail.IsRequired;
 
-                surveyTemplateDetails.Add(new SurveyTemplateDetail
+                var entityDetail = new SurveyTemplateDetail
                 {
                     SurveyTemplateId = surveyTemplate.Id,
                     FieldName = fieldName,
                     FieldDescription = fieldDescription,
                     FieldType = fieldType,
                     IsRequired = isRequired
-                });
+                };
+
+                new SurveyTemplateDetailValidator(entityDetail).Validate();
+
+                surveyTemplateDetails.Add(entityDetail);
             }
 
             await _surveyTemplateDetailRepository.CreateAll(surveyTemplateDetails);
