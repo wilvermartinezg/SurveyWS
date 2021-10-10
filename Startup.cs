@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SurveyWS.Api.Converters;
 using SurveyWS.Application.Create;
+using SurveyWS.Application.Delete;
 using SurveyWS.Application.Find;
+using SurveyWS.Application.Update;
 using SurveyWS.Domain.Repository;
 using SurveyWS.Infrastructure.EntityFramework;
 using SurveyWS.Infrastructure.Repository;
@@ -39,6 +41,8 @@ namespace SurveyWS
             // Configura la inyeccion de dependeicas para los casos de uso
             serviceCollection.AddScoped<SurveyTemplateCreator>();
             serviceCollection.AddScoped<SurveyTemplateFinder>();
+            serviceCollection.AddScoped<SurveyTemplateUpdater>();
+            serviceCollection.AddScoped<SurveyTemplateDeleter>();
 
             serviceCollection.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1", new() {Title = "Survey rest API", Version = "v1"}));
