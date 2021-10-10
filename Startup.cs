@@ -37,6 +37,8 @@ namespace SurveyWS
             // Configura la inyeccion de dependencias de las implementaciones de los repositorios de dominio
             serviceCollection.AddScoped<ISurveyTemplateRepository, SqlServerSurveyTemplateRepository>();
             serviceCollection.AddScoped<ISurveyTemplateDetailRepository, SqlServerSurveyTemplateDetailRepository>();
+            serviceCollection.AddScoped<ISurveyRepository, SqlServerSurveyRepository>();
+            serviceCollection.AddScoped<ISurveyDetailRepository, SqlServerSurveyDetailRepository>();
 
             // Configura la inyeccion de dependeicas para los casos de uso
             serviceCollection.AddScoped<SurveyTemplateCreator>();
@@ -47,6 +49,7 @@ namespace SurveyWS
             serviceCollection.AddScoped<SurveyTemplateDetailUpdater>();
             serviceCollection.AddScoped<SurveyTemplateDetailDeleter>();
             serviceCollection.AddScoped<SurveyTemplateDetailCreator>();
+            serviceCollection.AddScoped<SurveyCreator>();
 
             serviceCollection.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1", new() {Title = "Survey rest API", Version = "v1"}));

@@ -11,5 +11,7 @@ namespace SurveyWS.Infrastructure.EntityFramework
 
         public DbSet<SurveyTemplateEf> SurveyTemplateEfs { get; set; }
         public DbSet<SurveyTemplateDetailEf> SurveyTemplateDetailEfs { get; set; }
+        public DbSet<SurveyEf> SurveyEfs { get; set; }
+        public DbSet<SurveyDetailEf> SurveyDetailEfs { get; set; }
     }
 }
