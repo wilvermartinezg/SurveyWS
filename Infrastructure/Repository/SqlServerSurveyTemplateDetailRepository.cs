@@ -29,6 +29,27 @@ namespace SurveyWS.Infrastructure.Repository
             return entity == null ? null : _mapper.FromEntityFramework(entity);
         }
 
+        public async Task Create(SurveyTemplateDetail surveyTemplateDetail)
+        {
+            var surveyTemplateEntity = await _applicationDbContext
+                .SurveyTemplateEfs
+                .FirstOrDefaultAsync(entity => entity.Id == surveyTemplateDetail.SurveyTemplateId.Value);
+
+            var entity = new SurveyTemplateDetailEf
+            {
+                FieldName = surveyTemplateDetail.FieldName.Value,
+                FieldDescription = surveyTemplateDetail.FieldDescription.Value,
+                FieldType = surveyTemplateDetail.FieldType.Value,
+                SurveyTemplate = surveyTemplateEntity
+            };
+
+            _applicationDbContext.Add(entity);
+
+            await _applicationDbContext.SaveChangesAsync();
+
+            surveyTemplateDetail.Id = SurveyTemplateDetailId.ValueOf(entity.Id);
+        }
+
         public async Task CreateAll(List<SurveyTemplateDetail> surveyTemplateDetails)
         {
             SurveyTemplateEf? surveyTemplateEntity = null;

@@ -16,7 +16,7 @@ namespace SurveyWS.Api.Controllers.Find
             _surveyTemplateByIdFinder = surveyTemplateByIdFinder;
         }
 
-        [HttpGet("id:long")]
+        [HttpGet("id:long"), ActionName("FindById")]
         public async Task<ActionResult<SurveyTemplateSummary>> Index(long id)
         {
             var result = await _surveyTemplateByIdFinder.Find(id);
