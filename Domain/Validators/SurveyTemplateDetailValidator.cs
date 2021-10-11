@@ -13,9 +13,9 @@ namespace SurveyWS.Domain.Validators
 
         public void Validate()
         {
-            _entity.FieldName.validate();
-            _entity.FieldDescription.validate();
-            _entity.FieldType.validate();
+            _entity.FieldName.Validate();
+            _entity.FieldDescription.Validate();
+            _entity.FieldType.Validate();
         }
     }
 }

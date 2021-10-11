@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SurveyWS.Domain.Entities.SurveyTemplate;
 using SurveyWS.Domain.Entities.SurveyTemplateDetail;
 using SurveyWS.Domain.Exceptions;
 using SurveyWS.Domain.Repository;
@@ -18,6 +20,18 @@ namespace SurveyWS.Infrastructure.Repository
         public SqlServerSurveyTemplateDetailRepository(ApplicationDbContext applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;
+        }
+
+        public async Task<List<SurveyTemplateDetail>> FindBySurveyTemplateId(SurveyTemplateId surveyTemplateId)
+        {
+            var dataList = await _applicationDbContext
+                .SurveyTemplateDetailEfs
+                .Where(entity => entity.SurveyTemplate != null && entity.SurveyTemplate.Id == surveyTemplateId.Value)
+                .ToListAsync();
+
+            return dataList
+                .Select(_mapper.FromEntityFramework)
+                .ToList();
         }
 
         public async Task<SurveyTemplateDetail?> FindById(SurveyTemplateDetailId id)

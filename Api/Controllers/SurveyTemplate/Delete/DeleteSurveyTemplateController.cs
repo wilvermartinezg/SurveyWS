@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SurveyWS.Application.Delete;
 
-namespace SurveyWS.Api.Controllers.Delete
+namespace SurveyWS.Api.Controllers.SurveyTemplate.Delete
 {
     [ApiController]
     [Route("api/survey-template")]
@@ -15,7 +17,8 @@ namespace SurveyWS.Api.Controllers.Delete
             _surveyTemplateDeleter = surveyTemplateDeleter;
         }
 
-        [HttpDelete("id:long")]
+        [HttpDelete("{id:long}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult> Index(long id)
         {
             await _surveyTemplateDeleter.Delete(id);

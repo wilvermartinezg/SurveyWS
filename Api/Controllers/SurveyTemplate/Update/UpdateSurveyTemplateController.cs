@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SurveyWS.Application;
 using SurveyWS.Application.Update;
 
-namespace SurveyWS.Api.Controllers.Update
+namespace SurveyWS.Api.Controllers.SurveyTemplate.Update
 {
     [ApiController]
     [Route("api/survey-template")]
@@ -17,6 +19,7 @@ namespace SurveyWS.Api.Controllers.Update
         }
 
         [HttpPut]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult> Index([FromBody] SurveyTemplateJsonDto data)
         {
             var request = new SurveyTemplateRequest

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using SurveyWS.Application;
 using SurveyWS.Application.Create;
 
-namespace SurveyWS.Api.Controllers.Create
+namespace SurveyWS.Api.Controllers.Survey.Create
 {
     [ApiController]
     [Route("api/survey")]
@@ -35,7 +35,7 @@ namespace SurveyWS.Api.Controllers.Create
 
             var result = await _surveyCreator.Create(request);
 
-            return CreatedAtRoute("FindSurveyById", result, result);
+            return CreatedAtRoute("FindSurveyById", new {id = result}, result);
         }
     }
 }

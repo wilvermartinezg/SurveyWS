@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SurveyWS.Application.Find;
 using SurveyWS.Domain.Presentation;
@@ -17,6 +19,7 @@ namespace SurveyWS.Api.Controllers.Find
         }
 
         [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<SurveyTemplateSummary>> Index()
         {
             var result = await _surveyTemplateFinder.Find();

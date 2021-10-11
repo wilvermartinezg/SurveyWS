@@ -11,7 +11,7 @@ namespace SurveyWS.Domain.Entities.SurveyTemplateDetail
             Value = value.Trim();
         }
 
-        public void validate()
+        public void Validate()
         {
             if (Value == "")
             {

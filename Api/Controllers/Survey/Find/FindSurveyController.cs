@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SurveyWS.Application.Find;
 using SurveyWS.Domain.Presentation;
 
-namespace SurveyWS.Api.Controllers.Find
+namespace SurveyWS.Api.Controllers.Survey.Find
 {
     [ApiController]
     [Route("api/survey")]

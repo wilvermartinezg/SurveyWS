@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SurveyWS.Api.Controllers
+namespace SurveyWS.Api.Controllers.Survey
 {
     public struct SurveyJsonDto
     {

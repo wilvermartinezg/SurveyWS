@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SurveyWS.Application.Find;
 using SurveyWS.Domain.Presentation;
 
-namespace SurveyWS.Api.Controllers.Find
+namespace SurveyWS.Api.Controllers.SurveyTemplate.Find
 {
     [ApiController]
     [Route("api/survey-template")]
@@ -16,7 +16,7 @@ namespace SurveyWS.Api.Controllers.Find
             _surveyTemplateByIdFinder = surveyTemplateByIdFinder;
         }
 
-        [HttpGet("id:long", Name = "FindTemplateById")]
+        [HttpGet("{id:long}", Name = "FindTemplateById")]
         public async Task<ActionResult<SurveyTemplateSummary>> Index(long id)
         {
             var result = await _surveyTemplateByIdFinder.Find(id);
