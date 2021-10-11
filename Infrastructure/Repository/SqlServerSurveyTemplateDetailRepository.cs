@@ -54,7 +54,8 @@ namespace SurveyWS.Infrastructure.Repository
                 FieldName = surveyTemplateDetail.FieldName.Value,
                 FieldDescription = surveyTemplateDetail.FieldDescription.Value,
                 FieldType = surveyTemplateDetail.FieldType.Value,
-                SurveyTemplate = surveyTemplateEntity
+                SurveyTemplate = surveyTemplateEntity,
+                IsRequired = surveyTemplateDetail.IsRequired
             };
 
             _applicationDbContext.Add(entity);
@@ -79,7 +80,8 @@ namespace SurveyWS.Infrastructure.Repository
                     FieldName = detail.FieldName.Value,
                     FieldDescription = detail.FieldDescription.Value,
                     FieldType = detail.FieldType.Value,
-                    SurveyTemplate = surveyTemplateEntity
+                    SurveyTemplate = surveyTemplateEntity,
+                    IsRequired = detail.IsRequired
                 };
 
                 _applicationDbContext.Add(entity);
