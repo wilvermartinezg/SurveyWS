@@ -24,6 +24,7 @@ namespace SurveyWS.Api.Controllers.SurveyTemplate.Update
         {
             var request = new SurveyTemplateRequest
             {
+                Id = data.Id ?? 0L,
                 Name = data.Name ?? "",
                 Description = data.Description ?? ""
             };

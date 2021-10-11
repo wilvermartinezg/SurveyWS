@@ -29,6 +29,7 @@ namespace SurveyWS.Application.Update
             entityToUpdate.FieldName = SurveyTemplateDetailFieldName.ValueOf(request.FieldName);
             entityToUpdate.FieldDescription = SurveyTemplateDetailFieldDescription.ValueOf(request.FieldDescription);
             entityToUpdate.FieldType = SurveyTemplateDetailFieldType.ValueOf(request.FieldType);
+            entityToUpdate.IsRequired = request.IsRequired;
 
             // 4. Validamos los datos requeridos
             new SurveyTemplateDetailValidator(entityToUpdate).Validate();
